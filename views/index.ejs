@@ -38,6 +38,7 @@
           style="width: 99%"
           class="text-center mx-auto table mt-5 table-striped table-bordered"
         >
+          <% if (data.length > 0) { %>
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -49,6 +50,12 @@
               <th scope="col">Action</th>
             </tr>
           </thead>
+          <% } else { %>
+          <h1 style="text-align: center; color: #22deff">
+            مفيش بيانات يا حلويات
+          </h1>
+          <% } %>
+
           <tbody>
             <% data.forEach((person, index) => { %>
             <tr>
