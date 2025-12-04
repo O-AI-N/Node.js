@@ -42,12 +42,12 @@
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">
-              Ali Hassan
+              <%= `${data.firstName} ${data.lastName}` %>
             </li>
           </ol>
 
           <p class="me-md-5">
-            <span class="fw-medium fs-6">Id :</span> 6487021520bcf1af6319484c
+            <span class="fw-medium fs-6">Id :</span> <%= data._id %>
           </p>
         </nav>
 
@@ -55,7 +55,7 @@
           <div class="col-md-6">
             <label for="inputfirstName4" class="form-label">First Name:</label>
             <input
-              placeholder="Ali..."
+              placeholder="<%= data.firstName %>..."
               type="text"
               class="form-control"
               id="inputfirstName4"
@@ -64,7 +64,7 @@
           <div class="col-md-6">
             <label for="inputlastName4" class="form-label">Last Name:</label>
             <input
-              placeholder="Hassan..."
+              placeholder="<%= data.lastName %>..."
               type="text"
               class="form-control"
               id="inputlastName4"
@@ -74,7 +74,7 @@
           <div class="col-md-6">
             <label for="inputemail4" class="form-label">Email:</label>
             <input
-              placeholder="ali@gmail.com"
+              placeholder="<%= data.email %>"
               type="email"
               class="form-control"
               id="inputemail4"
@@ -83,7 +83,7 @@
           <div class="col-md-6">
             <label for="inputtele4" class="form-label">Telephone:</label>
             <input
-              placeholder="011987899"
+              placeholder="<%= data.phoneNumber %>"
               type="number"
               class="form-control"
               id="inputtele4"
@@ -94,7 +94,7 @@
             <div class="col-md-6">
               <label for="inputage4" class="form-label">Age:</label>
               <input
-                placeholder="Your Age: ..."
+                placeholder="Your Age: <%= data.age %>?"
                 type="number"
                 class="form-control"
                 id="inputage4"
@@ -173,7 +173,9 @@
               >
                 Close
               </button>
-              <button type="button" class="btn btn-danger">Delete</button>
+              <form action="/edit/<%= data._id %>?_method=DELETE" method="post">
+                <button type="submit" class="btn btn-danger">Delete</button>
+              </form>
             </div>
           </div>
         </div>
