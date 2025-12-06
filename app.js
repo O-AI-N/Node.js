@@ -31,7 +31,7 @@ liveReloadServer.server.once("connection", () => {
 app.get("/", (req, res) => {
   //result => array of objects
   User.find()
-    .then((result) => res.render("index", { data: result, moment: moment }))
+    .then((result) => res.render("index", { data: result, moment }))
     .catch((err) => console.error(err));
 });
 
@@ -42,7 +42,7 @@ app.get("/user/add.html", (req, res) => {
 app.get("/edit/:id", (req, res) => {
   User.findById(req.params.id)
     .then((result) => {
-      res.render("user/edit", { data: result, moment: moment, countries });
+      res.render("user/edit", { data: result, moment, countries });
     })
     .catch((err) => console.error(err));
 });
@@ -50,7 +50,7 @@ app.get("/edit/:id", (req, res) => {
 app.get("/view/:id", (req, res) => {
   User.findById(req.params.id)
     .then((result) => {
-      res.render("user/view", { data: result, moment: moment });
+      res.render("user/view", { data: result, moment });
     })
     .catch((err) => console.error(err));
 });
@@ -60,6 +60,16 @@ app.post("/user/add.html", (req, res) => {
   User.create(req.body)
     .then(() => {
       res.redirect("/");
+    })
+    .catch((err) => console.error(err));
+});
+
+app.post("/search", (req, res) => {
+  const searchText = req.body.searchText.trim();
+  User.find({ $or: [{ firstName: searchText }, { lastName: searchText }] })
+    .then((result) => {
+      // console.log(result);
+      res.render("user/search", { data: result, moment });
     })
     .catch((err) => console.error(err));
 });
