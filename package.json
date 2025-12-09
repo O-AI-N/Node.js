@@ -12,6 +12,7 @@
   "dependencies": {
     "connect-livereload": "^0.6.1",
     "countries-list": "^3.2.2",
+    "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "livereload": "^0.10.3",
